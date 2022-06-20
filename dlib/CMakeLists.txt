@@ -1025,3 +1025,7 @@ if (WIN32 AND mkl_iomp_dll)
 endif()
 
 add_library(dlib::dlib ALIAS dlib)
+
+if(MSVC)
+   set_property(TARGET dlib PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif()
